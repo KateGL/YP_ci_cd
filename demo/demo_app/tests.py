@@ -9,4 +9,4 @@ class DemoAppTests(TestCase):
         pass
     
     def test_demo_app_one(self):
-        pass
+        print("test_demo_app_one")

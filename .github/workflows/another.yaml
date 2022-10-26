@@ -80,7 +80,6 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ always() }}
     needs: [test_flake8, test_other]
     steps:
       - name: Deploy

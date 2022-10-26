@@ -14,7 +14,10 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.8, 3.9]
-
+    strategy:
+      matrix:
+        is_fali: [true]
+    continue-on-error: ${{ matrix.experimental }}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -28,4 +31,13 @@ jobs:
     - name: Check with flake 8
       run: |
          python -m flake8
+    - name: Run Unit Tests
+      if: always()
+      run: |
+        cd demo
+        pytest
+    - name: Run Django Tests
+      run: |
+        cd demo
+        python manage.py test
 

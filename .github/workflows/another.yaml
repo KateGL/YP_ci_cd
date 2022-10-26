@@ -64,7 +64,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest    
     needs: [test_flake8, test_other]
-    if:  ${{ always() && !cancelled() && !contains(needs.*.result, 'failure') }}
     steps:
       - name: Deploy
         run: |

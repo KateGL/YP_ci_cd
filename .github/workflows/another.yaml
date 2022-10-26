@@ -14,9 +14,7 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.8, 3.9]
-    strategy:
-      matrix:
-        is_fali: [true]
+        is_fali: [true, true]
     continue-on-error: ${{ matrix.experimental }}
     steps:
     - uses: actions/checkout@v3

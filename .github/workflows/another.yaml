@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: false
     outputs:
-      output3: ${{ steps.step3.outputs.result }}
+      output_from_build: ${{ steps.step3.outputs.result }}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python "3.8"
@@ -50,7 +50,8 @@ jobs:
     steps:
     - name: Print build result
       run: |
-        echo ${{needs.build.outputs.result}}
+        echo ${{needs}}
+        echo ${{needs.build.outputs.output_from_build}}
     - uses: actions/checkout@v3
     - name: Set up Python "3.8"
       uses: actions/setup-python@v3

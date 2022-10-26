@@ -65,6 +65,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    if: steps.test_flake8.outcome != 'success' || steps.test_other.outcome != 'success'
     needs: [test_flake8, test_other]
     steps:
       - name: Deploy
